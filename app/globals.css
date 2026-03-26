@@ -1,26 +1,78 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-lexend: var(--font-lexend);
+  --font-inter: var(--font-inter);
+
+  --color-brand-gold: #fecd11;
+  --color-brand-yellow: #fecd11;
+  --color-brand-orange: #ec9808;
+  --color-brand-bg: #121214;
+  --color-brand-text: #d9d9d9;
+
+  /* Use CSS variables for complex shadows to avoid spaces in tailwind utilities which break formatting */
+  --shadow-glass-panel: 0 8px 32px 0 rgba(254, 205, 17, 0.05);
+  --shadow-glass-badge: 0 4px 16px 0 rgba(254, 205, 17, 0.05);
+  --shadow-hover-glow: 0 0 20px rgba(254, 205, 17, 0.4);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  body {
+    background-color: var(--color-brand-bg);
+    color: var(--color-brand-text);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-lexend);
+  }
+
+  .font-inter {
+    font-family: var(--font-inter);
+  }
+
+  /* Core liquid glass effects */
+  .glass-panel {
+    @apply bg-brand-bg/60 backdrop-blur-2xl border border-brand-text/5 rounded-2xl;
+    box-shadow: var(--shadow-glass-panel);
+  }
+
+  .glass-badge {
+    @apply bg-brand-text/5 backdrop-blur-md border border-brand-text/10 rounded-full px-4 py-2;
+    box-shadow: var(--shadow-glass-badge);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Base tailwind classes for custom utilities since v4 doesn't use tailwind.config.ts plugin out of the box in the same way, we define typical classes here if we want them as utilities. */
+.bg-glass {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+}
+
+.border-glass {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: var(--shadow-hover-glow);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--color-brand-gold), var(--color-brand-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-orange {
+  background: linear-gradient(90deg, var(--color-brand-yellow), var(--color-brand-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
