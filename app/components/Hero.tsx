@@ -67,14 +67,14 @@ export default function Hero() {
             />
 
             {/* Dark overlay for readability */}
-            {/* <div className="absolute inset-0 bg-black/50 z-[1]" /> */}
+            <div className="absolute inset-0 bg-black/50 z-[1]" />
 
             {/* Subtle gradient overlays for depth */}
-            {/* <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0c]/90 via-transparent to-[#0a0a0c]/80 z-[1]" /> */}
-            {/* <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0c] via-transparent to-transparent z-[1]" /> */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0c]/90 via-transparent to-[#0a0a0c]/80 z-[1]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0c] via-transparent to-transparent z-[1]" />
 
             {/* Cinematic Lens Flare / Soft Glow Behind Text */}
-            {/* <div className="absolute top-1/4 left-[-10%] w-[600px] h-[600px] bg-brand-gold/10 rounded-full blur-[150px] pointer-events-none z-[1]" /> */}
+            <div className="absolute top-1/4 left-[-10%] w-[600px] h-[600px] bg-brand-gold/10 rounded-full blur-[150px] pointer-events-none z-[1]" />
 
             {/* ─── Hero Content Container ─── */}
             <div
