@@ -1,8 +1,21 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-export default function DecryptedText({ text, delay = 0 }: { text: string; delay?: number }) {
+interface DecryptedTextProps {
+    text: string;
+    delay?: number;
+    className?: string;
+    finishedClassName?: string;
+}
+
+export default function DecryptedText({
+    text,
+    delay = 0,
+    className = "",
+    finishedClassName = ""
+}: DecryptedTextProps) {
     const [displayedText, setDisplayedText] = useState(text.replace(/[0-9]/g, '0'));
+    const [isFinished, setIsFinished] = useState(false);
 
     useEffect(() => {
         let iterations = 0;
@@ -24,6 +37,7 @@ export default function DecryptedText({ text, delay = 0 }: { text: string; delay
                 if (iterations >= text.length) {
                     clearInterval(interval);
                     setDisplayedText(text);
+                    setIsFinished(true);
                 }
 
                 // Slower animation speed
@@ -36,5 +50,9 @@ export default function DecryptedText({ text, delay = 0 }: { text: string; delay
         return () => clearTimeout(timeout);
     }, [text, delay]);
 
-    return <>{displayedText}</>;
+    return (
+        <span className={`${className} ${isFinished ? finishedClassName : ''} transition-colors duration-1000`}>
+            {displayedText}
+        </span>
+    );
 }

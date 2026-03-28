@@ -56,15 +56,16 @@ export default function Hero() {
     return (
         <section className="relative w-full min-h-screen overflow-hidden">
 
-            {/* ─── Full-Viewport Background Image ─── */}
-            <Image
-                src="/hero-section.jpg"
-                alt="96in — Premium Sports & Casino"
-                fill
-                priority
-                className="object-cover"
-                sizes="100vw"
-            />
+            {/* ─── Full-Viewport Background Video ─── */}
+            <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover z-0"
+            >
+                <source src="/hero-animation.mp4" type="video/mp4" />
+            </video>
 
             {/* Dark overlay for readability */}
             <div className="absolute inset-0 bg-black/50 z-[1]" />
@@ -157,8 +158,13 @@ export default function Hero() {
                                 <span className="text-white/30 text-[9px] sm:text-[10px] font-bold tracking-[0.2em] uppercase font-inter">
                                     {stat.label}
                                 </span>
-                                <span className="text-white font-mono text-2xl sm:text-[32px] leading-none font-light tracking-tight">
-                                    <DecryptedText text={stat.value} delay={800 + i * 150} />
+                                <span className="font-mono text-2xl sm:text-[32px] leading-none font-light tracking-tight">
+                                    <DecryptedText
+                                        text={stat.value}
+                                        delay={800 + i * 150}
+                                        className="text-white"
+                                        finishedClassName="text-brand-gold"
+                                    />
                                 </span>
                             </div>
                         ))}
@@ -166,7 +172,7 @@ export default function Hero() {
                 </div>
 
                 {/* ═══ BOTTOM — Partnership Strip ═══ */}
-                <div className="relative border-t border-white/10 pt-6 pb-4 mt-auto mb-6 -mx-6 px-6 sm:-mx-12 sm:px-12 rounded-t-[3rem] animate-fade-in-up overflow-hidden" style={{ animationDelay: '500ms' }}>
+                <div className="relative border-b border-white/10 pt-6 pb-4 mt-auto mb-6 -mx-6 px-6 sm:-mx-12 sm:px-12 rounded-t-[3rem] animate-fade-in-up overflow-hidden" style={{ animationDelay: '500ms' }}>
                     {/* Dark gradient to make logos pop */}
                     {/* <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-black/0 -z-10" /> */}
 
@@ -186,7 +192,8 @@ export default function Hero() {
                                         alt={`Provider ${idx}`}
                                         fill
                                         className="object-contain"
-                                        sizes="412px"
+                                        sizes="(max-width: 640px) 128px, 160px"
+                                        loading="eager"
                                         unoptimized
                                     />
                                 </div>

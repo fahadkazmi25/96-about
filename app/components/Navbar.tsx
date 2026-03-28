@@ -64,6 +64,7 @@ export default function Navbar() {
                         src="/96.com.png"
                         alt="96.com Logo"
                         fill
+                        sizes="96px"
                         className="object-contain"
                         priority
                     />
